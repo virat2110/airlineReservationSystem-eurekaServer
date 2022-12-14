@@ -1,0 +1,21 @@
+server:
+  port: 8083
+  
+  
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: ADMIN-DASH
+        uri:
+          lb://ADMIN-DASH
+        predicates:
+        - Path=/admin/**
+      - id: USERS
+        uri:
+          lb://USERS
+        predicates:
+        - Path=/users/**
+        
